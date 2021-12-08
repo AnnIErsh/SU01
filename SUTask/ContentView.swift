@@ -12,8 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            DashboardScreen().tabItem {
-                Label("Dashboard", systemImage: "paperplane")
+            DashboardScreen(tabTag: $selection).tabItem {
+                Label("Dashboard", systemImage: "circle")
             }
             .tag(0)
             ColorScreen().tabItem {

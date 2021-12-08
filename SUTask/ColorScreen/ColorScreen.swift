@@ -24,13 +24,14 @@ struct ListView: View {
     
     var body: some View {
         List($colorViewModel.colors) { color in
-            ColorRow(text: color.name, color: color.color, isSelected: color.isSelected)
-                .padding(.vertical)
-                .listRowSeparator(.hidden)
+            NavigationLink(destination: PreviewColorScreen(chosenColor: color.color)) {
+                ColorRow(text: color.name, color: color.color, isSelected: color.isSelected)
+                    .padding(.vertical)
+                    .listRowSeparator(.hidden)
+            }
         }
     }
 }
-
 
 struct ColorRow: View {
     @Binding var text: String
@@ -41,9 +42,9 @@ struct ColorRow: View {
     var body: some View {
         Label("\(text)", systemImage: imageName)
             .foregroundColor(color)
-            .onTapGesture {
-                print("\(text)")
-            }
+//            .onTapGesture {
+//                print("\(text)")
+//            }
             .onAppear {
                 if (isSelected) {
                     rowColor = color.opacity(0.2)
