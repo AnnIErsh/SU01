@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection: Int = 0
-    @State private var selectionColor:Int?
+    @State private var selectionColor: Int?
     
     var body: some View {
         TabView(selection: $selection) {

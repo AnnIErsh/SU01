@@ -24,7 +24,6 @@ struct PictureScreen: View {
 }
 
 struct SheetView: View {
-    //presentationMode.wrappedValue.dismiss()
     @Environment (\.dismiss) var dismiss
     
     var body: some View {

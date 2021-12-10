@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ColorScreen: View {
     @Binding var selectedColor: Int?
-   // @ObservedObject var colorViewModel = ColorViewModel()
     @EnvironmentObject var colorViewModel: ColorViewModel
+    
     var body: some View {
         NavigationView {
             List(self.$colorViewModel.colors.indices) { i in
@@ -32,7 +32,6 @@ struct ColorScreen: View {
         .edgesIgnoringSafeArea(.all)
     }
 }
-
 
 struct ColorRow: View {
     @Binding var text: String

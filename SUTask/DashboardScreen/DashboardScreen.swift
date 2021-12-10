@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DashboardScreen: View {
     @ObservedObject var dashboardViewModel = DashboardViewModel()
-    //@ObservedObject var colorViewModel = ColorViewModel()
     @EnvironmentObject var colorViewModel: ColorViewModel
     @Binding var tabTag: Int
     @Binding var tabColor: Int?
@@ -20,13 +19,11 @@ struct DashboardScreen: View {
             Button("Show random color") {
                 push.toggle()
                 tabTag = 1
-                //colorViewModel.tmp = 5
                 tabColor = Int.random(in: 0..<10)
             }
             .padding()
             .font(.title)
             .background(Color.gray.opacity(0.2))
         }
-       // .environmentObject(colorViewModel)
     }
 }
