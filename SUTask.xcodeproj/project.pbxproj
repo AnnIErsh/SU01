@@ -16,6 +16,8 @@
 		E717579E275FB6F00095CB65 /* ColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E717579D275FB6F00095CB65 /* ColorViewModel.swift */; };
 		E71757A1275FE1DE0095CB65 /* PictureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71757A0275FE1DE0095CB65 /* PictureScreen.swift */; };
 		E71757A3275FE32E0095CB65 /* PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71757A2275FE32E0095CB65 /* PictureViewModel.swift */; };
+		E72D892C2763F1A300BCC0DE /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = E72D892B2763F1A300BCC0DE /* UIComponents */; };
+		E72D892E2763FE1500BCC0DE /* PreviewColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D892D2763FE1500BCC0DE /* PreviewColorModel.swift */; };
 		E7307EBA2760DE1400CA557A /* PreviewColorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7307EB92760DE1400CA557A /* PreviewColorScreen.swift */; };
 		E7F2E0C3275EB00700E32AAE /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F2E0C2275EB00700E32AAE /* DashboardViewModel.swift */; };
 		E7F2E0CA275EC76700E32AAE /* DashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F2E0C9275EC76700E32AAE /* DashboardScreen.swift */; };
@@ -32,6 +34,8 @@
 		E717579D275FB6F00095CB65 /* ColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewModel.swift; sourceTree = "<group>"; };
 		E71757A0275FE1DE0095CB65 /* PictureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureScreen.swift; sourceTree = "<group>"; };
 		E71757A2275FE32E0095CB65 /* PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewModel.swift; sourceTree = "<group>"; };
+		E72D89292763F0EF00BCC0DE /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = text; name = UIComponents; path = Modules/UIComponents; sourceTree = SOURCE_ROOT; };
+		E72D892D2763FE1500BCC0DE /* PreviewColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewColorModel.swift; sourceTree = "<group>"; };
 		E7307EB92760DE1400CA557A /* PreviewColorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewColorScreen.swift; sourceTree = "<group>"; };
 		E7F2E0C2275EB00700E32AAE /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		E7F2E0C9275EC76700E32AAE /* DashboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardScreen.swift; sourceTree = "<group>"; };
@@ -42,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72D892C2763F1A300BCC0DE /* UIComponents in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +58,7 @@
 			children = (
 				E702B457275CEB7F00D524C7 /* SUTask */,
 				E702B456275CEB7F00D524C7 /* Products */,
+				E72D892A2763F1A300BCC0DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +73,7 @@
 		E702B457275CEB7F00D524C7 /* SUTask */ = {
 			isa = PBXGroup;
 			children = (
+				E72D89292763F0EF00BCC0DE /* UIComponents */,
 				E717579F275FE1AD0095CB65 /* PictureScreen */,
 				E7175798275FB6300095CB65 /* ColorScreen */,
 				E7F2E0C1275EAF1800E32AAE /* DashboardScreen */,
@@ -106,10 +113,18 @@
 			path = PictureScreen;
 			sourceTree = "<group>";
 		};
+		E72D892A2763F1A300BCC0DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E7307EB42760DD4A00CA557A /* PreviewColorScreen */ = {
 			isa = PBXGroup;
 			children = (
 				E7307EB92760DE1400CA557A /* PreviewColorScreen.swift */,
+				E72D892D2763FE1500BCC0DE /* PreviewColorModel.swift */,
 			);
 			path = PreviewColorScreen;
 			sourceTree = "<group>";
@@ -139,6 +154,9 @@
 			dependencies = (
 			);
 			name = SUTask;
+			packageProductDependencies = (
+				E72D892B2763F1A300BCC0DE /* UIComponents */,
+			);
 			productName = SUTask;
 			productReference = E702B455275CEB7F00D524C7 /* SUTask.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E702B45B275CEB7F00D524C7 /* ContentView.swift in Sources */,
+				E72D892E2763FE1500BCC0DE /* PreviewColorModel.swift in Sources */,
 				E717579E275FB6F00095CB65 /* ColorViewModel.swift in Sources */,
 				E71757A3275FE32E0095CB65 /* PictureViewModel.swift in Sources */,
 				E71757A1275FE1DE0095CB65 /* PictureScreen.swift in Sources */,
@@ -339,6 +358,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -368,6 +388,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -405,6 +426,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E72D892B2763F1A300BCC0DE /* UIComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UIComponents;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E702B44D275CEB7F00D524C7 /* Project object */;
 }

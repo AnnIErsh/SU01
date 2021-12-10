@@ -13,6 +13,7 @@ struct SUTaskApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(ColorViewModel())
+                .environmentObject(PreviewColorModel())
         }
     }
 }

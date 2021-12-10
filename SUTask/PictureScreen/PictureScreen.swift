@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import UIComponents
 
 struct PictureScreen: View {
     @State private var showingSheet = false
     var body: some View {
         VStack {
-            Button("Show pictures") {
+            Button("Show picture") {
                 showingSheet.toggle()
             }
             .sheet(isPresented: $showingSheet) {
@@ -25,15 +26,20 @@ struct PictureScreen: View {
 
 struct SheetView: View {
     @Environment (\.dismiss) var dismiss
+    @EnvironmentObject var previewColorModel: PreviewColorModel
     
     var body: some View {
-        Button("Press to dismiss") {
-            dismiss()
+        VStack {
+            Picture(color: previewColorModel.chosenColor)
+                .padding()
+            Button("Press to dismiss") {
+                dismiss()
+            }
+            .foregroundColor(.gray)
+            .font(.title)
+            .padding()
+            .background(previewColorModel.chosenColor.opacity(0.2))
         }
-        .foregroundColor(.gray)
-        .font(.title)
-        .padding()
-        .background(Color.gray.opacity(0.2))
     }
 }
 
