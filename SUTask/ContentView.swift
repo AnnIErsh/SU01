@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection: Int = 0
+    @State private var selectionColor:Int?
     
     var body: some View {
         TabView(selection: $selection) {
-            DashboardScreen(tabTag: $selection).tabItem {
+            DashboardScreen(tabTag: $selection, tabColor: $selectionColor).tabItem {
                 Label("Dashboard", systemImage: "circle")
             }
             .tag(0)
-            ColorScreen().tabItem {
+            ColorScreen(selectedColor: $selectionColor).tabItem {
                 Label("Colors", systemImage: "paintbrush")
             }
             .tag(1)

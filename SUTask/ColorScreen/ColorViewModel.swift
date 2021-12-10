@@ -22,4 +22,12 @@ final class ColorViewModel: ObservableObject {
         ColorModel(id: UUID(), name: "#e87aa4", color: .init(red: 0.91, green: 0.478, blue: 0.643, opacity: 1)),
         ColorModel(id: UUID(), name: "#0f2e3f", color: .init(red: 0.059, green: 0.18, blue: 0.247, opacity: 1))
     ]
+    
+    @Published var colorToChose: Int?
+    
+    var tmp: Int? = 0 {
+        didSet {
+            colorToChose = tmp
+        }
+    }
 }

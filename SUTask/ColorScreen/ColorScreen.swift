@@ -8,30 +8,31 @@
 import SwiftUI
 
 struct ColorScreen: View {
+    @Binding var selectedColor: Int?
+   // @ObservedObject var colorViewModel = ColorViewModel()
+    @EnvironmentObject var colorViewModel: ColorViewModel
     var body: some View {
         NavigationView {
-            ListView()
-                .navigationBarTitle("Colors", displayMode: .inline)
+            List(self.$colorViewModel.colors.indices) { i in
+                NavigationLink(destination: PreviewColorScreen(chosenColor: $colorViewModel.colors[i]), tag: i, selection: $colorViewModel.colorToChose) {
+                    ColorRow(text: $colorViewModel.colors[i].name, color: $colorViewModel.colors[i].color, isSelected: $colorViewModel.colors[i].isSelected)
+                        .padding(.vertical)
+                        .listRowSeparator(.hidden)
+                }
+            }
+            .navigationBarTitle("Colors", displayMode: .inline)
+            .onAppear {
+                colorViewModel.tmp = selectedColor
+            }
+            .onDisappear {
+                selectedColor = nil
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .edgesIgnoringSafeArea(.all)
     }
 }
 
-struct ListView: View {
-    @ObservedObject var colorViewModel = ColorViewModel()
-   // @State var selected: UUID?
-    
-    var body: some View {
-        List($colorViewModel.colors) { color in
-            NavigationLink(destination: PreviewColorScreen(chosenColor: color.color)) {
-                ColorRow(text: color.name, color: color.color, isSelected: color.isSelected)
-                    .padding(.vertical)
-                    .listRowSeparator(.hidden)
-            }
-        }
-    }
-}
 
 struct ColorRow: View {
     @Binding var text: String
@@ -54,10 +55,3 @@ struct ColorRow: View {
     }
 }
 
-struct ColorScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ColorScreen()
-        }
-    }
-}
