@@ -12,23 +12,27 @@ struct ColorScreen: View {
     @EnvironmentObject var colorViewModel: ColorViewModel
     
     var body: some View {
-        NavigationView {
-            List(self.$colorViewModel.colors.indices) { i in
-                NavigationLink(destination: PreviewColorScreen(chosenColor: $colorViewModel.colors[i]), tag: i, selection: $colorViewModel.colorToChose) {
-                    ColorRow(text: $colorViewModel.colors[i].name, color: $colorViewModel.colors[i].color, isSelected: $colorViewModel.colors[i].isSelected)
-                        .padding(.vertical)
-                        .listRowSeparator(.hidden)
+        ScrollViewReader { index in
+            NavigationView {
+                List(self.$colorViewModel.colors.indices) { i in
+                    NavigationLink(destination: PreviewColorScreen(chosenColor: $colorViewModel.colors[i]), tag: i, selection: $colorViewModel.colorToChose) {
+                        ColorRow(text: $colorViewModel.colors[i].name, color: $colorViewModel.colors[i].color, isSelected: $colorViewModel.colors[i].isSelected)
+                            .padding(.vertical)
+                            .listRowSeparator(.hidden)
+                    }
+                    .id(i)
+                }
+                .navigationBarTitle("Colors", displayMode: .inline)
+                .onAppear {
+                    index.scrollTo(selectedColor)
+                    colorViewModel.tmp = selectedColor
+                }
+                .onDisappear {
+                    selectedColor = nil
                 }
             }
-            .navigationBarTitle("Colors", displayMode: .inline)
-            .onAppear {
-                colorViewModel.tmp = selectedColor
-            }
-            .onDisappear {
-                selectedColor = nil
-            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .edgesIgnoringSafeArea(.all)
     }
 }
@@ -38,19 +42,9 @@ struct ColorRow: View {
     @Binding var color: Color
     @Binding var isSelected: Bool
     @State var imageName: String = "app.fill"
-    @State var rowColor: Color = .white
     var body: some View {
         Label("\(text)", systemImage: imageName)
             .foregroundColor(color)
-//            .onTapGesture {
-//                print("\(text)")
-//            }
-            .onAppear {
-                if (isSelected) {
-                    rowColor = color.opacity(0.2)
-                }
-            }
-            .listRowBackground(rowColor)
     }
 }
 
